@@ -1,15 +1,16 @@
-Development Kubernetes Cluster
+# 🏗️ Development Kubernetes Cluster
 
-A hands-on Kubernetes project focused on building and managing a small development environment using kubeadm, containerd, and Flannel.
+A hands-on Kubernetes project focused on building and managing a small development environment using **kubeadm**, **containerd**, and **Flannel**.
 
 The goal is to build a multi-node Kubernetes cluster and use it to deploy and manage a web application, while exploring core DevOps and Kubernetes concepts.
 
-Architecture
+## 🖥️ 1. Architecture
 
 The planned cluster consists of one Control Plane node and one Worker node.
 
+```text
                  Development Cluster
-                        
+
                  ┌──────────────────┐
                  │       mini       │
                  │   Control Plane  │
@@ -23,52 +24,55 @@ The planned cluster consists of one Control Plane node and one Worker node.
                  │     Worker       │
                  │ 192.168.157.129  │
                  └──────────────────┘
+```
 
-Infrastructure
+## 🖧 2. Infrastructure
 
-Node| Role| IP Address| Operating System
-mini| Control Plane| 192.168.157.128| Ubuntu 22.04
-server3| Worker (planned)| 192.168.157.129| Ubuntu 22.04
+| Node | Role | IP Address | Operating System |
+| :--- | :--- | :--- | :--- |
+| `mini` | Control Plane | `192.168.157.128` | Ubuntu 22.04 |
+| `server3` | Worker (planned) | `192.168.157.129` | Ubuntu 22.04 |
 
-Technology Stack
+## ⚙️ 3. Technology Stack
 
-Technology| Purpose
-Kubernetes| Container orchestration
-kubeadm| Cluster initialization and node management
-kubelet| Node agent
-kubectl| Kubernetes command-line interface
-containerd| Container runtime
-Flannel| Container Network Interface (CNI)
+| Technology | Purpose |
+| :--- | :--- |
+| Kubernetes | Container orchestration |
+| kubeadm | Cluster initialization and node management |
+| kubelet | Node agent |
+| kubectl | Kubernetes command-line interface |
+| containerd | Container runtime |
+| Flannel | Container Network Interface (CNI) |
 
-Application Workloads
+## 📦 4. Application Workloads
 
 The planned application deployment is based on VProfile.
 
 The application consists of three main components:
 
-- vproweb – Web component
-- vproapp – Application component
-- vprodb – Database component
+- **vproweb** – Web component
+- **vproapp** – Application component
+- **vprodb** – Database component
 
 These components will be deployed as Kubernetes workloads using container images.
 
 Persistent storage and application configuration will be addressed during the deployment phase.
 
-Current Status
+## 📋 5. Current Status
 
-- [x] Kubernetes Control Plane initialized on "mini"
+- [x] Kubernetes Control Plane initialized on `mini`
 - [x] Containerd configured as the container runtime
 - [x] Flannel CNI installed
 - [x] Control Plane node in Ready state
-- [x] Kubernetes 1.37.2 tools installed on "server3"
-- [x] Containerd CRI plugin enabled on "server3"
+- [x] Kubernetes 1.37.2 tools installed on `server3`
+- [x] Containerd CRI plugin enabled on `server3`
 - [ ] Complete Worker node configuration
-- [ ] Join "server3" to the cluster
+- [ ] Join `server3` to the cluster
 - [ ] Deploy VProfile workloads
 - [ ] Configure persistent storage
 - [ ] Test application connectivity
 
-Project Goals
+## 🎯 6. Project Goals
 
 - Understand Kubernetes cluster architecture and node communication.
 - Practice container orchestration with kubeadm.
@@ -78,4 +82,4 @@ Project Goals
 
 ---
 
-Project Status: In Progress
+**Project Status:** In Progress
