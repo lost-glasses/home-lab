@@ -10,11 +10,54 @@ The planned cluster consists of one Control Plane node and one Worker node.
 
 ```mermaid
 flowchart TB
-    subgraph Cluster["Development Kubernetes Cluster"]
-        CP["mini<br/>Control Plane<br/>192.168.157.128"]
-        WK["server3<br/>Worker<br/>192.168.157.129"]
-        CP -->|Kubernetes API| WK
+
+    subgraph LAB["Home Lab - Development Environment"]
+
+        subgraph CLUSTER["Kubernetes Cluster - development"]
+
+            subgraph CP["Control Plane Node"]
+                MINI["mini<br/>192.168.157.128"]
+
+                API["kube-apiserver"]
+                ETCD["etcd"]
+                SCHED["kube-scheduler"]
+                CM["kube-controller-manager"]
+
+                MINI --- API
+                MINI --- ETCD
+                MINI --- SCHED
+                MINI --- CM
+            end
+
+            subgraph WORKERS["Worker Nodes"]
+                SERVER3["server3<br/>192.168.157.129<br/>Planned"]
+            end
+
+            subgraph NETWORK["Cluster Networking"]
+                FLANNEL["Flannel CNI"]
+                PODNET["Pod Network<br/>10.244.0.0/16"]
+            end
+
+            subgraph RUNTIME["Container Runtime"]
+                CRI["CRI"]
+                CONTAINERD["containerd"]
+            end
+
+            API <-->|Kubernetes API| SERVER3
+            SERVER3 --- CRI
+            CRI --- CONTAINERD
+            FLANNEL --- PODNET
+        end
     end
+
+    style MINI fill:#2563eb,color:#fff,stroke:#1d4ed8
+    style SERVER3 fill:#64748b,color:#fff,stroke:#475569
+    style API fill:#0f766e,color:#fff,stroke:#115e59
+    style ETCD fill:#0f766e,color:#fff,stroke:#115e59
+    style SCHED fill:#0f766e,color:#fff,stroke:#115e59
+    style CM fill:#0f766e,color:#fff,stroke:#115e59
+    style CONTAINERD fill:#7c3aed,color:#fff,stroke:#6d28d9
+    style FLANNEL fill:#d97706,color:#fff,stroke:#b45309
 ```
 
 ## 🖧 2. Infrastructure
