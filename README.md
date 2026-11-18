@@ -8,22 +8,13 @@ The goal is to build a multi-node Kubernetes cluster and use it to deploy and ma
 
 The planned cluster consists of one Control Plane node and one Worker node.
 
-```text
-                 Development Cluster
-
-                 ┌──────────────────┐
-                 │       mini       │
-                 │   Control Plane  │
-                 │ 192.168.157.128  │
-                 └────────┬─────────┘
-                          │
-                    Kubernetes API
-                          │
-                 ┌────────▼─────────┐
-                 │     server3      │
-                 │     Worker       │
-                 │ 192.168.157.129  │
-                 └──────────────────┘
+```mermaid
+flowchart TB
+    subgraph Cluster["Development Kubernetes Cluster"]
+        CP["mini<br/>Control Plane<br/>192.168.157.128"]
+        WK["server3<br/>Worker<br/>192.168.157.129"]
+        CP -->|Kubernetes API| WK
+    end
 ```
 
 ## 🖧 2. Infrastructure
