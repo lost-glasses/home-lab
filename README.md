@@ -30,7 +30,7 @@ flowchart TB
             end
 
             subgraph WORKERS["Worker Nodes"]
-                SERVER3["server3<br/>192.168.157.129<br/>Planned"]
+                SERVER3["server3<br/>192.168.157.129<br/>Ready"]
             end
 
             subgraph NETWORK["Cluster Networking"]
@@ -60,12 +60,10 @@ flowchart TB
     style FLANNEL fill:#d97706,color:#fff,stroke:#b45309
 ```
 
-## 🖧 2. Infrastructure
-
 | Node | Role | IP Address | Operating System |
 | :--- | :--- | :--- | :--- |
 | `mini` | Control Plane | `192.168.157.128` | Ubuntu 22.04 |
-| `server3` | Worker (planned) | `192.168.157.129` | Ubuntu 22.04 |
+| `server3` | Worker Node | `192.168.157.129` | Ubuntu 22.04 |
 
 ## ⚙️ 3. Technology Stack
 
@@ -98,10 +96,11 @@ Persistent storage and application configuration will be addressed during the de
 - [x] Containerd configured as the container runtime
 - [x] Flannel CNI installed
 - [x] Control Plane node in Ready state
-- [x] Kubernetes 1.37.2 tools installed on `server3`
-- [x] Containerd CRI plugin enabled on `server3`
-- [ ] Complete Worker node configuration
-- [ ] Join `server3` to the cluster
+- [x] Kubernetes 1.37.2 installed on `server3`
+- [x] Containerd CRI configured on `server3`
+- [x] `server3` successfully joined the Kubernetes cluster
+- [x] Worker Node reached Ready state
+- [x] Flannel running on both nodes
 - [ ] Deploy VProfile workloads
 - [ ] Configure persistent storage
 - [ ] Test application connectivity
